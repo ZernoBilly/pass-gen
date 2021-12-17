@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const FormContainer = styled.div`
   height: 90vh;
@@ -13,7 +14,7 @@ export const FormContainer = styled.div`
 
 export const TopContainer = styled.div`
   width: 100%;
-  height: 20rem;
+  height: 17rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -21,13 +22,13 @@ export const TopContainer = styled.div`
   padding-bottom: 5rem;
 `;
 
-export const BackDrop = styled.div`
+export const DropBar = styled(motion.div)`
   width: 200%;
   min-width: 50rem;
   height: 50rem;
   position: absolute;
   border-radius: 50%;
-  top: -25rem;
+  top: -28rem;
   left: -18rem;
   transform: rotate(-5deg);
   background: ${({ theme }) => theme.gradientColor.primary.backgroundColor};
@@ -65,5 +66,14 @@ export const InputContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
+`;
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
 `;

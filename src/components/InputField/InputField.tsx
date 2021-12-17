@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Input } from "./styled";
+import { Input, ShowPasswordButton } from "./styled";
 
 type InputFieldProps = {
   type: "email" | "password" | "text";
@@ -8,7 +8,31 @@ type InputFieldProps = {
 };
 
 const InputField: React.FC<InputFieldProps> = ({ type, label }) => {
-  return <Input type={type} placeholder={label}></Input>;
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClick = () => {
+    setShowPassword(!showPassword);
+  };
+
+  return (
+    <>
+      <Input
+        type={
+          type === "password" && !showPassword
+            ? "password"
+            : type === "password"
+            ? "text"
+            : type
+        }
+        placeholder={label}
+      ></Input>
+      {type === "password" && (
+        <ShowPasswordButton onClick={() => handleClick()}>
+          {showPassword ? "Hide password" : "Show password"}
+        </ShowPasswordButton>
+      )}
+    </>
+  );
 };
 
 export default InputField;

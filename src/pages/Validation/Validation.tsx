@@ -10,7 +10,7 @@ const Validation = () => {
       <Form
         title={["Welcome", "back"]}
         description={"Please sign-in"}
-        type={"signin"}
+        type={"signup"}
       />
     </MainContainer>
   );
