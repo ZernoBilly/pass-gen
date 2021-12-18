@@ -22,6 +22,7 @@ type FormProps = {
 
 const Form: React.FC<FormProps> = ({ title, description, type }) => {
   const [isDropBarExpanded, setIsDropBarExpanded] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const dropBarVariants = {
     expanded: {
