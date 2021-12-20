@@ -3,23 +3,23 @@ import React, { useState } from "react";
 import { Input, ShowPasswordButton } from "./styled";
 
 type InputFieldProps = {
-  type: "email" | "password" | "text";
+  type: "email" | "password" | "name";
   label?: string;
+  handleChange: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-const InputField: React.FC<InputFieldProps> = ({ type, label }) => {
+const InputField: React.FC<InputFieldProps> = ({
+  type,
+  label,
+  handleChange,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [inputValue, setInputValue] = useState("");
 
-  const handleClick = () => {
+  const handleClick = (e: any) => {
+    e.preventDefault();
     setShowPassword(!showPassword);
   };
 
-  const handleChange = (e: any) => {
-    setInputValue(e.target.value);
-  };
-
-  console.log(inputValue);
   return (
     <>
       <Input
@@ -32,9 +32,10 @@ const InputField: React.FC<InputFieldProps> = ({ type, label }) => {
         }
         placeholder={label}
         onChange={handleChange}
+        name={type}
       ></Input>
       {type === "password" && (
-        <ShowPasswordButton onClick={() => handleClick()}>
+        <ShowPasswordButton onClick={(e) => handleClick(e)}>
           {!showPassword ? "Show password" : "Hide password"}
         </ShowPasswordButton>
       )}

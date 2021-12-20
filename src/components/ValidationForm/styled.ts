@@ -18,7 +18,7 @@ export const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 2rem;
+  padding: 0 2rem 0 2rem;
   padding-bottom: 5rem;
 `;
 
@@ -76,4 +76,17 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
+`;
+
+export const LoadingMessage = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  p {
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.palette.secondary.light};
+  }
 `;

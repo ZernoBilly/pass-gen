@@ -12,6 +12,8 @@ export const SubmitButton = styled.button`
   transition: all, 240ms ease-in-out;
 
   &:hover {
-    filter: brightness(1.1);
+  }
+
+  &:active {
   }
 `;

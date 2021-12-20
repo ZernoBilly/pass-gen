@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-import Form from "../../components/Form/Form";
+import ValidationForm from "../../components/ValidationForm/ValidationForm";
 
 import { MainContainer } from "./styled";
 
 const Validation = () => {
+  const [validationType, setValidationType] = useState<string>("signup");
+  console.log(validationType);
   return (
     <MainContainer>
-      <Form
+      <ValidationForm
         title={["Welcome", "back"]}
         description={"Please sign-in"}
-        type={"signup"}
+        validationType={validationType}
+        setValidationType={setValidationType}
       />
     </MainContainer>
   );
