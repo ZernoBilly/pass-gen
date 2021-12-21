@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SubmitButton = styled.button`
   width: 77%;
+  height: 2rem;
   text-align: center;
   background: ${({ theme }) => theme.gradientColor.primary.backgroundColor};
   background: ${({ theme }) => theme.gradientColor.primary.linearGradient};

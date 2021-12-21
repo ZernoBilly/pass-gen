@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 export const FormContainer = styled.div`
   height: 90vh;
-  width: 25vw;
-  min-width: 20rem;
+  width: 30rem;
+  //min-width: 20rem;
   position: relative;
   overflow: hidden;
   border-radius: 2rem;
@@ -75,7 +75,7 @@ export const ButtonContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 10rem;
 `;
 
 export const LoadingMessage = styled.div`
@@ -89,4 +89,12 @@ export const LoadingMessage = styled.div`
     font-size: 1.5rem;
     color: ${({ theme }) => theme.palette.secondary.light};
   }
+`;
+
+export const ChangeValidationType = styled.p`
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.palette.warning.main};
+  text-decoration: underline;
+  cursor: pointer;
 `;

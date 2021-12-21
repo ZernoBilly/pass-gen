@@ -19,6 +19,7 @@ import {
   InputContainer,
   ButtonContainer,
   LoadingMessage,
+  ChangeValidationType,
 } from "./styled";
 
 type FormProps = {
@@ -32,6 +33,7 @@ const ValidationForm: React.FC<FormProps> = ({
   title,
   description,
   validationType,
+  setValidationType,
 }) => {
   const initInputValues = {
     name: "",
@@ -51,51 +53,67 @@ const ValidationForm: React.FC<FormProps> = ({
 
   // Signup or Login user validation, error handling and animation delays
   const handleClick = async () => {
-    let data;
+    let response: any; // Response from API
     setIsDropBarExpanded(true);
     setValidationMessage("Validating credentials");
+
+    //Delay for DropBar animation
     setTimeout(() => {
       setShowValidationMessage(true);
     }, 200);
+
+    // Send input values to API
     if (validationType === "signup") {
       const { data: signUpData } = await axios.post(SIGNUP, {
         name: inputValues.name,
         email: inputValues.email,
         password: inputValues.password,
       });
-      data = signUpData;
+      response = signUpData;
     } else if (validationType === "login") {
       const { data: loginData } = await axios.post(LOGIN, {
         email: inputValues.email,
         password: inputValues.password,
       });
-      data = loginData;
+      response = loginData;
     }
 
-    if (data.errors.length) {
-      setValidationMessage(data.errors[0].msg);
+    //Check errors from API response
+    if (response.errors.length) {
+      setValidationMessage(response.errors[0].msg);
     }
 
+    //Delay for DropBar animation
     setTimeout(() => {
       setIsDropBarExpanded(false);
       setShowValidationMessage(false);
     }, expandingTransition.duration * 1000);
 
-    if (!data.errors.length) {
-      localStorage.setItem("token", data.data.token);
+    //If no errors set userState and navigate to /Home
+    if (!response.errors.length) {
+      localStorage.setItem("token", response.data.token);
       setTimeout(() => {
+        setState({
+          user: {
+            id: response.data.user._id,
+            name: response.data.user.name,
+            email: response.data.user.email,
+          },
+          error: null,
+          loading: false,
+        });
         navigate("/Home");
       }, expandingTransition.duration * 1000);
+
+      localStorage.setItem("token", response.data.token);
+      axios.defaults.headers.common[
+        "authorization"
+      ] = `Bearer ${response.data.token}`;
     }
   };
 
   return (
     <FormContainer>
-      {showValidationMessage && (
-        <LoadingMessage>
-          <p>{validationMessage}</p>
-        </LoadingMessage>
-      )}
       <TopContainer>
         <DropBar
           initial={false}
@@ -112,6 +130,11 @@ const ValidationForm: React.FC<FormProps> = ({
           <HeaderDescription>
             {description ? description : ""}
           </HeaderDescription>
+          {showValidationMessage && (
+            <LoadingMessage>
+              <p>{validationMessage}</p>
+            </LoadingMessage>
+          )}
         </HeaderContainer>
       </TopContainer>
       <InputContainer>
@@ -135,6 +158,15 @@ const ValidationForm: React.FC<FormProps> = ({
       </InputContainer>
       <ButtonContainer>
         <Button type={"submit"} text={"Submit"} handleClick={handleClick} />
+        <ChangeValidationType
+          onClick={() =>
+            setValidationType(validationType === "signup" ? "login" : "signup")
+          }
+        >
+          {validationType === "signup"
+            ? "Already have account?"
+            : "Create account"}
+        </ChangeValidationType>
       </ButtonContainer>
     </FormContainer>
   );

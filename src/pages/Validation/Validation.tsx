@@ -5,7 +5,7 @@ import ValidationForm from "../../components/ValidationForm/ValidationForm";
 import { MainContainer } from "./styled";
 
 const Validation = () => {
-  const [validationType, setValidationType] = useState<string>("signup");
+  const [validationType, setValidationType] = useState<string>("login");
   console.log(validationType);
   return (
     <MainContainer>
