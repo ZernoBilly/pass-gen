@@ -6,13 +6,16 @@ import GlobalStyle from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme/theme";
 import { UserProvider } from "./contexts/userContext";
+import { PasswordProvider } from "./contexts/passwordContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <UserProvider>
-        <App />
+        <PasswordProvider>
+          <App />
+        </PasswordProvider>
       </UserProvider>
     </ThemeProvider>
   </React.StrictMode>,
