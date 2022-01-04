@@ -2,12 +2,13 @@ import React from "react";
 
 import PasswordsList from "../../components/PasswordsList/PasswordsList";
 
+import { HomeContainer } from "./styled";
+
 const Home = () => {
   return (
-    <div>
-      Home
+    <HomeContainer>
       <PasswordsList />
-    </div>
+    </HomeContainer>
   );
 };
 

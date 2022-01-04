@@ -92,10 +92,11 @@ const ValidationForm: React.FC<FormProps> = ({
     //If no errors set userState and navigate to /Home
     if (!response.errors.length) {
       localStorage.setItem("token", response.data.token);
+
       setTimeout(() => {
         setState({
           user: {
-            id: response.data.user._id,
+            id: response.data.user.id,
             name: response.data.user.name,
             email: response.data.user.email,
           },
