@@ -7,7 +7,8 @@ import {
   PasswordItemTitle,
   passwordItemDate,
   Password,
-  RemovePasswordButton,
+  RemovePasswordButtonContainer,
+  RemoveButton,
 } from "./styled";
 
 type PasswordItemProps = {
@@ -17,9 +18,15 @@ type PasswordItemProps = {
 const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
   return (
     <PasswordItemContainer>
-      <PasswordItemTitle>{password.title}</PasswordItemTitle>
-      <Password>{password.password}</Password>
-      <RemovePasswordButton>Remove</RemovePasswordButton>
+      <PasswordItemTitle>
+        <h3>{password.title}</h3>
+      </PasswordItemTitle>
+      <Password>
+        <p>{password.password}</p>
+      </Password>
+      <RemovePasswordButtonContainer>
+        <RemoveButton>Remove</RemoveButton>
+      </RemovePasswordButtonContainer>
     </PasswordItemContainer>
   );
 };

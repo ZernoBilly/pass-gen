@@ -56,8 +56,21 @@ export default {
   },
 
   boxShadow: {
-    small: "0 2px 4px 0 rgba(33, 33, 33, 0.3)",
-    medium: "0 4px 8px 0 rgba(33, 33, 33, 0.3)",
-    large: "0 8px 16px 0 rgba(33, 33, 33, 0.3)",
+    small: "0 1px 2px 0 rgba(0, 0, 0, 0.6)",
+    medium: "0 2px 4px 0 rgba(0, 0, 0, 0.6)",
+    large: "0 4px 8px 0 rgba(0, 0, 0, 0.6)",
+  },
+
+  borderRadius: {
+    small: "0.5rem",
+    medium: "1rem",
+    large: "1.5rem",
+  },
+
+  buttonSize: {
+    smallHeight: "2rem",
+    smallWidth: "4rem",
+    mediumHeight: "3rem",
+    mediumWidth: "6rem",
   },
 };

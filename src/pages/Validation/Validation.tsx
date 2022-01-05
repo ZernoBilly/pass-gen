@@ -11,7 +11,11 @@ const Validation = () => {
     <MainContainer>
       <ValidationForm
         title={["Welcome", "back"]}
-        description={"Please sign-in"}
+        description={
+          validationType === "signup"
+            ? "Please create account"
+            : "Please sign-in"
+        }
         validationType={validationType}
         setValidationType={setValidationType}
       />
