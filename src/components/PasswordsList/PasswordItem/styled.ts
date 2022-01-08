@@ -5,7 +5,7 @@ export const PasswordItemContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 30rem;
+  min-width: 30rem;
   height: 6rem;
   background-color: ${({ theme }) => theme.palette.secondary.main};
   margin: 1rem;
@@ -51,6 +51,13 @@ export const PasswordItemTitle = styled.div`
   }
 `;
 
+export const PasswordContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+`;
+
 export const Password = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -61,6 +68,13 @@ export const Password = styled.div`
 
   p {
     margin: 0.3rem;
+  }
+`;
+
+export const CopyButtonContainer = styled.div`
+  button {
+    margin: 0;
+    padding: 0;
   }
 `;
 

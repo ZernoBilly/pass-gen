@@ -78,5 +78,8 @@ export default {
 
   fontSize: {
     small: "0.8rem",
+    medium: "1rem",
+    large: "1.5rem",
+    title: "3rem",
   },
 };

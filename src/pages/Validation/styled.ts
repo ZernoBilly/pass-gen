@@ -9,5 +9,5 @@ export const MainContainer = styled.div`
   padding: 0;
   height: 100vh;
   width: 100vw;
-  background-color: ${({ theme }) => theme.palette.light.light};
+  //background-color: ${({ theme }) => theme.palette.light.light};
 `;
