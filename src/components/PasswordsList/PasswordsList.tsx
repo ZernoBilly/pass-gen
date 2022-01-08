@@ -29,8 +29,8 @@ const PasswordsList = () => {
   return (
     <PasswordsListContainer>
       {passwordsState.length &&
-        passwordsState.map((value: IPassword) => (
-          <PasswordItem password={value} />
+        passwordsState.map((value: IPassword, index: number) => (
+          <PasswordItem key={index} password={value} />
         ))}
     </PasswordsListContainer>
   );

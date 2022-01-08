@@ -68,9 +68,15 @@ export default {
   },
 
   buttonSize: {
+    iconlHeight: "1rem",
+    iconWidth: "1rem",
     smallHeight: "2rem",
     smallWidth: "4rem",
     mediumHeight: "3rem",
     mediumWidth: "6rem",
+  },
+
+  fontSize: {
+    small: "0.8rem",
   },
 };

@@ -124,7 +124,9 @@ const ValidationForm: React.FC<FormProps> = ({
         />
         <HeaderContainer>
           {Array.isArray(title) ? (
-            title.map((value) => <HeaderTitle>{value}</HeaderTitle>)
+            title.map((value, index) => (
+              <HeaderTitle key={index}>{value}</HeaderTitle>
+            ))
           ) : (
             <HeaderTitle>{title}</HeaderTitle>
           )}

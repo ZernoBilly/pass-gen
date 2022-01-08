@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { IPassword } from "../../../interfaces/IPassword";
 
 import {
   PasswordItemContainer,
   PasswordItemTitle,
-  passwordItemDate,
   Password,
   RemovePasswordButtonContainer,
   RemoveButton,
+  TopContainer,
+  MiddleContainer,
+  BottomContainer,
+  CreatedAtContainer,
+  ShowPasswordContainer,
+  Dot,
 } from "./styled";
 
 type PasswordItemProps = {
@@ -16,17 +21,39 @@ type PasswordItemProps = {
 };
 
 const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <PasswordItemContainer>
-      <PasswordItemTitle>
-        <h3>{password.title}</h3>
-      </PasswordItemTitle>
-      <Password>
-        <p>{password.password}</p>
-      </Password>
-      <RemovePasswordButtonContainer>
-        <RemoveButton>Remove</RemoveButton>
-      </RemovePasswordButtonContainer>
+      <TopContainer>
+        <RemovePasswordButtonContainer>
+          <RemoveButton>X</RemoveButton>
+        </RemovePasswordButtonContainer>
+      </TopContainer>
+      <MiddleContainer>
+        <PasswordItemTitle>
+          <h3>{password.title}</h3>
+        </PasswordItemTitle>
+        <Password>
+          {showPassword ? (
+            <p>{password.password}</p>
+          ) : (
+            [...password.password].map((value, index) => (
+              <Dot key={index}></Dot>
+            ))
+          )}
+        </Password>
+        <ShowPasswordContainer>
+          <p onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? "hide password" : "show password"}
+          </p>
+        </ShowPasswordContainer>
+      </MiddleContainer>
+      <BottomContainer>
+        <CreatedAtContainer>
+          <p>{password.createdAt?.slice(0, 10)}</p>
+        </CreatedAtContainer>
+      </BottomContainer>
     </PasswordItemContainer>
   );
 };
