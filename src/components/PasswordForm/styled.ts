@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const PasswordFormContainer = styled.div`
-  height: 10rem;
+  height: 11rem;
   width: 50%;
-  min-width: 30rem;
+  min-width: 25rem;
   max-width: 55rem;
   background-color: ${({ theme }) => theme.palette.optional.main};
   margin: 1rem 0 2rem 0;
@@ -14,6 +14,10 @@ export const PasswordFormContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+
+  @media ${({ theme }) => theme.mediaQueries.md} {
+    width: 25rem;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -34,6 +38,11 @@ export const SlideBar = styled(motion.div)`
   transform: rotate(-5deg);
   background: ${({ theme }) => theme.gradientColor.primary.backgroundColor};
   background: ${({ theme }) => theme.gradientColor.primary.linearGradient};
+
+  @media ${({ theme }) => theme.mediaQueries.md} {
+    top: -20rem;
+    left: -23.3rem;
+  }
 `;
 
 export const PasswordActionsContainer = styled.div`
@@ -58,6 +67,11 @@ export const Header = styled.h4`
   z-index: 10;
   color: ${({ theme }) => theme.palette.light.light};
   font-weight: 550;
+
+  @media ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 0.9rem;
+    margin-right: 1rem;
+  }
 `;
 
 export const InputFieldContainer = styled.div`
@@ -113,6 +127,10 @@ export const InputField = styled.div`
     margin-left: 0.8rem;
     font-size: ${({ theme }) => theme.fontSize.large};
     cursor: default;
+
+    @media ${({ theme }) => theme.mediaQueries.md} {
+      font-size: 1.3rem;
+    }
   }
 `;
 

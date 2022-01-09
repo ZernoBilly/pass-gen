@@ -8,6 +8,8 @@ import { PasswordContext } from "../../../contexts/passwordContext";
 
 import copyToClipboard from "../../../utils/copyToClipboard";
 
+import { DELETE_PASSWORD } from "../../../api/api";
+
 import {
   PasswordItemContainer,
   PasswordItemTitle,
@@ -30,7 +32,6 @@ type PasswordItemProps = {
 
 const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [userState, setUserState] = useContext<any>(UserContext);
   const [passwordsState, setPasswordsState] = useContext<any>(PasswordContext);
 
   const handleDelete = async () => {
@@ -38,12 +39,9 @@ const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
       _id: password._id,
       userID: password.userID,
     };
-    const { data } = await axios.delete(
-      "http://localhost:5002/password/delete",
-      {
-        data: reqData,
-      }
-    );
+    const { data } = await axios.delete(DELETE_PASSWORD, {
+      data: reqData,
+    });
 
     setPasswordsState(data.data.passwords);
   };

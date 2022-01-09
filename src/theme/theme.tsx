@@ -82,4 +82,11 @@ export default {
     large: "1.5rem",
     title: "3rem",
   },
+
+  mediaQueries: {
+    xs: "only screen and (max-width: 600px)",
+    sm: "only screen and (max-width: 960px)",
+    md: "only screen and (max-width: 1280px)",
+    //@media ${({ theme }) => theme.mediaQueries.md} {}
+  },
 };

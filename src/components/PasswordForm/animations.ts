@@ -1,4 +1,4 @@
-export const dropBarVariants = {
+export const slideBarVariants = {
   expanded: {
     width: "200%",
     height: "30rem",

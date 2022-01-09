@@ -5,7 +5,7 @@ export const PasswordItemContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-width: 30rem;
+  width: 30rem;
   height: 6rem;
   background-color: ${({ theme }) => theme.palette.secondary.main};
   margin: 1rem;
@@ -13,6 +13,10 @@ export const PasswordItemContainer = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow.medium};
   background: ${({ theme }) => theme.gradientColor.secondary.backgroundColor};
   background: ${({ theme }) => theme.gradientColor.secondary.linearGradient};
+
+  @media ${({ theme }) => theme.mediaQueries.md} {
+    width: 25rem;
+  }
 `;
 
 export const TopContainer = styled.div`
@@ -48,6 +52,10 @@ export const PasswordItemTitle = styled.div`
   width: 6rem;
   h3 {
     color: ${({ theme }) => theme.palette.primary.dark};
+
+    @media ${({ theme }) => theme.mediaQueries.md} {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -63,7 +71,7 @@ export const Password = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 2rem;
-  min-width: 12rem;
+  min-width: 10.5rem;
   background-color: ${({ theme }) => theme.palette.light.main};
 
   p {
@@ -130,6 +138,6 @@ export const Dot = styled.div`
   width: 5px;
   border-radius: 50%;
   background-color: black;
-  margin-left: 4px;
+  margin-left: 5px;
   padding: 0;
 `;

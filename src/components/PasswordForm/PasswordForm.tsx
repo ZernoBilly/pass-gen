@@ -6,7 +6,9 @@ import Button from "../Button/Button";
 import { UserContext } from "../../contexts/userContext";
 import { PasswordContext } from "../../contexts/passwordContext";
 
-import { dropBarVariants, expandingTransition } from "./animations";
+import { slideBarVariants, expandingTransition } from "./animations";
+
+import { CREATE_PASSWORD } from "../../api/api";
 
 import {
   PasswordFormContainer,
@@ -47,7 +49,7 @@ const PasswordForm = () => {
   const [inputValues, setInputValues] = useState<InputValues>(initValues);
   const [userState, setUserState] = useContext<any>(UserContext);
   const [passwordsState, setPasswordsState] = useContext<any>(PasswordContext);
-  const [isDropBarExpanded, setIsDropBarExpanded] = useState(false);
+  const [isSlideBarExpanded, setIsSlideBarExpanded] = useState(false);
   const [titleText, setTitleText] = useState<string>(initTitleText);
 
   const changeAmount = (value: number) => {
@@ -77,31 +79,28 @@ const PasswordForm = () => {
   };
 
   const handleCreatePassword = async () => {
-    setIsDropBarExpanded(true);
+    setIsSlideBarExpanded(true);
     if (!inputValues.title) {
       setTitleText("Invalid title!");
       setTimeout(() => {
-        setIsDropBarExpanded(false);
+        setIsSlideBarExpanded(false);
         setTitleText(initTitleText);
       }, expandingTransition.duration * 1000);
     } else {
       setTitleText("Creating password");
-      const { data } = await axios.post(
-        "http://localhost:5002/password/create",
-        {
-          _id: userState.user.id,
-          title: inputValues.title,
-          password: {
-            length: inputValues.amount,
-            hasNumbers: inputValues.numbers,
-            hasSymbols: inputValues.symbols,
-          },
-          tag: inputValues.title,
-        }
-      );
+      const { data } = await axios.post(CREATE_PASSWORD, {
+        _id: userState.user.id,
+        title: inputValues.title,
+        password: {
+          length: inputValues.amount,
+          hasNumbers: inputValues.numbers,
+          hasSymbols: inputValues.symbols,
+        },
+        tag: inputValues.title,
+      });
 
       setTimeout(() => {
-        setIsDropBarExpanded(false);
+        setIsSlideBarExpanded(false);
         setTitleText(initTitleText);
         setPasswordsState(data.data.passwords);
         setInputValues(initValues);
@@ -114,8 +113,8 @@ const PasswordForm = () => {
       <TitleContainer>
         <SlideBar
           initial={false}
-          animate={isDropBarExpanded ? "expanded" : "collapsed"}
-          variants={dropBarVariants}
+          animate={isSlideBarExpanded ? "expanded" : "collapsed"}
+          variants={slideBarVariants}
           transition={expandingTransition}
         ></SlideBar>
         <HeaderContainer>

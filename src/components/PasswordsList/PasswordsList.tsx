@@ -10,12 +10,14 @@ import PasswordItem from "./PasswordItem/PasswordItem";
 import { PasswordContext } from "../../contexts/passwordContext";
 import { UserContext } from "../../contexts/userContext";
 
+import { GET_PASSWORDS } from "../../api/api";
+
 const PasswordsList = () => {
   const [passwordsState, setPasswordsState] = useContext<any>(PasswordContext);
   const [userState, setUserState] = useContext<any>(UserContext);
 
   const getPasswords = async () => {
-    const { data } = await axios.post("http://localhost:5002/password/getall", {
+    const { data } = await axios.post(GET_PASSWORDS, {
       _id: userState.user.id,
     });
 

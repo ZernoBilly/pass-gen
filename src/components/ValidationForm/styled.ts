@@ -10,6 +10,11 @@ export const FormContainer = styled.div`
   border-radius: 2rem;
   background-color: ${({ theme }) => theme.palette.light.main};
   box-shadow: ${({ theme }) => theme.boxShadow.small};
+
+  @media ${({ theme }) => theme.mediaQueries.md} {
+    height: 98vh;
+    width: 25rem;
+  }
 `;
 
 export const TopContainer = styled.div`
