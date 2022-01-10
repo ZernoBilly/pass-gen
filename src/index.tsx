@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./theme/theme";
 import { UserProvider } from "./contexts/userContext";
 import { PasswordProvider } from "./contexts/passwordContext";
+import { StyleProvider } from "./contexts/styleContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +15,9 @@ ReactDOM.render(
       <GlobalStyle />
       <UserProvider>
         <PasswordProvider>
-          <App />
+          <StyleProvider>
+            <App />
+          </StyleProvider>
         </PasswordProvider>
       </UserProvider>
     </ThemeProvider>

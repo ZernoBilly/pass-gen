@@ -10,11 +10,14 @@ export const SubmitButton = styled.button`
   border: none;
   border-radius: 1rem;
   cursor: pointer;
-  transition: all, 240ms ease-in-out;
+  transition: all 200ms ease-in-out;
 
   &:hover {
+    border: 1px solid;
   }
 
   &:active {
+    background: ${({ theme }) => theme.gradientColor.optional.backgroundColor};
+    background: ${({ theme }) => theme.gradientColor.optional.linearGradient};
   }
 `;

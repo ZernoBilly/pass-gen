@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const PasswordFormContainer = styled.div`
-  height: 11rem;
+  height: 10rem;
   width: 50%;
   min-width: 25rem;
   max-width: 55rem;
   background-color: ${({ theme }) => theme.palette.optional.main};
-  margin: 1rem 0 2rem 0;
+  margin: 1rem 0 1rem 0;
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   position: relative;
   display: flex;
@@ -60,7 +60,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 1rem 0 1rem;
+  margin: 0 1rem 0 0.5rem;
 `;
 
 export const Header = styled.h4`

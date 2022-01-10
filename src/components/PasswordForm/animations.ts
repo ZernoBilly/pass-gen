@@ -8,7 +8,7 @@ export const slideBarVariants = {
   },
   collapsed: {
     width: "100%",
-    height: "30rem",
+    height: "35rem",
     borderRadius: "50%",
     transform: "rotate(0deg)",
   },

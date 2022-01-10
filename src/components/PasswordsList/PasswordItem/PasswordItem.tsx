@@ -3,7 +3,6 @@ import axios from "axios";
 
 import { IPassword } from "../../../interfaces/IPassword";
 
-import { UserContext } from "../../../contexts/userContext";
 import { PasswordContext } from "../../../contexts/passwordContext";
 
 import copyToClipboard from "../../../utils/copyToClipboard";
@@ -15,7 +14,7 @@ import {
   PasswordItemTitle,
   Password,
   RemovePasswordButtonContainer,
-  RemoveButton,
+  RemoveIcon,
   TopContainer,
   MiddleContainer,
   BottomContainer,
@@ -24,6 +23,7 @@ import {
   Dot,
   PasswordContainer,
   CopyButtonContainer,
+  CopyIcon,
 } from "./styled";
 
 type PasswordItemProps = {
@@ -49,14 +49,14 @@ const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
   return (
     <PasswordItemContainer>
       <TopContainer>
-        <RemovePasswordButtonContainer>
-          <RemoveButton onClick={() => handleDelete()}>X</RemoveButton>
-        </RemovePasswordButtonContainer>
-      </TopContainer>
-      <MiddleContainer>
         <PasswordItemTitle>
           <h3>{password.title}</h3>
         </PasswordItemTitle>
+        <RemovePasswordButtonContainer onClick={() => handleDelete()}>
+          <RemoveIcon />
+        </RemovePasswordButtonContainer>
+      </TopContainer>
+      <MiddleContainer>
         <PasswordContainer>
           <Password>
             {showPassword ? (
@@ -67,13 +67,12 @@ const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
               ))
             )}
           </Password>
-          <CopyButtonContainer>
-            <button onClick={() => copyToClipboard(password.password)}>
-              C
-            </button>
+          <CopyButtonContainer
+            onClick={() => copyToClipboard(password.password)}
+          >
+            <CopyIcon />
           </CopyButtonContainer>
         </PasswordContainer>
-
         <ShowPasswordContainer>
           <p onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? "hide password" : "show password"}

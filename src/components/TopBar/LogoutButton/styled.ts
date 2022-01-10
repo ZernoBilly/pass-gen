@@ -15,4 +15,13 @@ export const Button = styled.button`
   box-shadow: ${({ theme }) => theme.boxShadow.small};
   background: ${({ theme }) => theme.gradientColor.primary.backgroundColor};
   background: ${({ theme }) => theme.gradientColor.primary.linearGradient};
+
+  &:hover {
+    border: 1px solid;
+  }
+
+  &:active {
+    background: ${({ theme }) => theme.gradientColor.optional.backgroundColor};
+    background: ${({ theme }) => theme.gradientColor.optional.linearGradient};
+  }
 `;
