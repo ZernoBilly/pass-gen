@@ -75,7 +75,7 @@ export const Password = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 2rem;
-  min-width: 15rem;
+  min-width: 13rem;
   background-color: ${({ theme }) => theme.palette.light.main};
 
   p {
