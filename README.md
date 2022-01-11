@@ -2,6 +2,8 @@
 
 Create and manage your passwords.
 
+Deployed on Netlify(https://passgen-appi.netlify.app/)
+
 ## Technologies
 
 - react `^17.0.2`
