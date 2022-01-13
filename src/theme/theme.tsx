@@ -53,6 +53,24 @@ export default {
       linearGradient:
         "linear-gradient(58deg, rgba(82,171,152,1) 20%, rgba(57,119,106,1) 100%)",
     },
+
+    warning: {
+      backgroundColor: "rgba(119, 50, 43, 1)",
+      linearGradient:
+        "linear-gradient(58deg, rgba(119, 50, 43, 1) 20%, rgba(83, 35, 30, 1) 100%)",
+    },
+
+    success: {
+      backgroundColor: "rgba(43, 119, 88, 1)",
+      linearGradient:
+        "linear-gradient(58deg, rgba(43, 119, 88, 1) 20%, rgba(30, 83, 61, 1) 100%)",
+    },
+
+    info: {
+      backgroundColor: "rgba(119, 43, 103, 1)",
+      linearGradient:
+        "linear-gradient(58deg, rgba(119, 43, 103, 1) 20%, rgba(83, 30, 72, 1) 100%)",
+    },
   },
 
   boxShadow: {

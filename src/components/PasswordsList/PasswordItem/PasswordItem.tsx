@@ -1,13 +1,12 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
 
 import { IPassword } from "../../../interfaces/IPassword";
 
-import { PasswordContext } from "../../../contexts/passwordContext";
+import { ModalContext } from "../../../contexts/modalContext";
 
 import copyToClipboard from "../../../utils/copyToClipboard";
 
-import { DELETE_PASSWORD } from "../../../api/api";
+import Modal from "../../Modal/Modal";
 
 import {
   PasswordItemContainer,
@@ -32,18 +31,15 @@ type PasswordItemProps = {
 
 const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [passwordsState, setPasswordsState] = useContext<any>(PasswordContext);
+  const [modalState, setModalState] = useContext(ModalContext);
 
-  const handleDelete = async () => {
-    const reqData = {
-      _id: password._id,
-      userID: password.userID,
-    };
-    const { data } = await axios.delete(DELETE_PASSWORD, {
-      data: reqData,
-    });
+  const handleDeleteButtonClick = () => {
+    const newState = { ...modalState };
+    newState.itemToDelete._id = password._id;
+    newState.itemToDelete.userID = password.userID;
+    newState.isModalOpen = true;
 
-    setPasswordsState(data.data.passwords);
+    setModalState(newState);
   };
 
   return (
@@ -52,7 +48,9 @@ const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
         <PasswordItemTitle>
           <h3>{password.title}</h3>
         </PasswordItemTitle>
-        <RemovePasswordButtonContainer onClick={() => handleDelete()}>
+        <RemovePasswordButtonContainer
+          onClick={() => handleDeleteButtonClick()}
+        >
           <RemoveIcon />
         </RemovePasswordButtonContainer>
       </TopContainer>
@@ -84,6 +82,22 @@ const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
           <p>{password.createdAt?.slice(0, 10)}</p>
         </CreatedAtContainer>
       </BottomContainer>
+      {modalState.isModalOpen && (
+        <Modal
+          type={"deletePassword"}
+          text={"Delete password?"}
+          buttons={[
+            {
+              text: "Cansel",
+              type: "cansel",
+            },
+            {
+              text: "Delete",
+              type: "delete",
+            },
+          ]}
+        />
+      )}
     </PasswordItemContainer>
   );
 };

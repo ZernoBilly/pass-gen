@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const FormContainer = styled.div`
-  height: 90vh;
+  height: 98vh;
+  min-height: 45rem;
   width: 30rem;
   //min-width: 20rem;
   position: relative;
@@ -12,8 +13,9 @@ export const FormContainer = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow.small};
 
   @media ${({ theme }) => theme.mediaQueries.md} {
-    height: 98vh;
+    height: 45rem;
     width: 25rem;
+    margin: 1rem;
   }
 `;
 

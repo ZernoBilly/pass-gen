@@ -5,21 +5,15 @@ import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./theme/theme";
-import { UserProvider } from "./contexts/userContext";
-import { PasswordProvider } from "./contexts/passwordContext";
-import { StyleProvider } from "./contexts/styleContext";
+import { CombinedProviders } from "./contexts/CombineProviders";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <UserProvider>
-        <PasswordProvider>
-          <StyleProvider>
-            <App />
-          </StyleProvider>
-        </PasswordProvider>
-      </UserProvider>
+      <CombinedProviders>
+        <App />
+      </CombinedProviders>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
