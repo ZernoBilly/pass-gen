@@ -8,6 +8,10 @@ import copyToClipboard from "../../../utils/copyToClipboard";
 
 import Modal from "../../Modal/Modal";
 
+import Alert from "../../Alert/Alert";
+
+import useAlert from "../../../hooks/useAlert";
+
 import {
   PasswordItemContainer,
   PasswordItemTitle,
@@ -32,6 +36,7 @@ type PasswordItemProps = {
 const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [modalState, setModalState] = useContext(ModalContext);
+  const { isAlertActive, showAlert } = useAlert(2);
 
   const handleDeleteButtonClick = () => {
     const newState = { ...modalState };
@@ -66,7 +71,10 @@ const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
             )}
           </Password>
           <CopyButtonContainer
-            onClick={() => copyToClipboard(password.password)}
+            onClick={() => {
+              copyToClipboard(password.password);
+              showAlert();
+            }}
           >
             <CopyIcon />
           </CopyButtonContainer>
@@ -98,6 +106,7 @@ const PasswordItem: React.FC<PasswordItemProps> = ({ password }) => {
           ]}
         />
       )}
+      {isAlertActive && <Alert type={"success"} text={"Copied!"} />}
     </PasswordItemContainer>
   );
 };

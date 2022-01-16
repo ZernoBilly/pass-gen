@@ -1,19 +1,29 @@
 import styled from "styled-components";
 
-export const AlertContainer = styled.div`
-  height: 4rem;
-  width: 12rem;
-  background-color: ${({ theme }) => theme.palette.success.light};
+type AlertContainerProps = {
+  color: string;
+};
+
+export const AlertContainer = styled.div<AlertContainerProps>`
+  height: 3rem;
+  width: 8rem;
+  background-color: ${(props) =>
+    (props.color === "success" && props.theme.palette.success.light) ||
+    (props.color === "info" && props.theme.palette.info.light) ||
+    (props.color === "warning" && props.theme.palette.warning.light)};
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: ${({ theme }) => theme.borderRadius.small};
+  border: 2px solid;
+  border-color: ${({ theme }) => theme.palette.primary.dark};
   position: fixed;
+
   inset: auto auto 1rem 1rem;
 
   @media ${({ theme }) => theme.mediaQueries.md} {
-    height: 3rem;
-    width: 9rem;
+    height: 2rem;
+    width: 6rem;
   }
 `;
 

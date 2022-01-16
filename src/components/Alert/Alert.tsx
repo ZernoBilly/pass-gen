@@ -2,10 +2,15 @@ import React from "react";
 
 import { AlertContainer, AlertText } from "./styled";
 
-const Alert = () => {
+type AlertProps = {
+  type: "success" | "info" | "warning";
+  text: string;
+};
+
+const Alert: React.FC<AlertProps> = ({ type, text }) => {
   return (
-    <AlertContainer>
-      <AlertText>Password created</AlertText>
+    <AlertContainer color={type}>
+      <AlertText>{text}</AlertText>
     </AlertContainer>
   );
 };

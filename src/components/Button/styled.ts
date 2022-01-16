@@ -19,7 +19,7 @@ export const SubmitButton = styled.button`
 
   &:hover {
     border: 1px solid;
-    border-color: ${({ theme }) => theme.palette.secondary.main};
+    border-color: ${({ theme }) => theme.palette.primary.light};
   }
 
   &:active {
