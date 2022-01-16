@@ -2,6 +2,9 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 
 import Button from "../Button/Button";
+import Alert from "../Alert/Alert";
+
+import useAlert from "../../hooks/useAlert";
 
 import { UserContext } from "../../contexts/userContext";
 import { PasswordContext } from "../../contexts/passwordContext";
@@ -51,6 +54,7 @@ const PasswordForm = () => {
   const [passwordsState, setPasswordsState] = useContext<any>(PasswordContext);
   const [isSlideBarExpanded, setIsSlideBarExpanded] = useState(false);
   const [titleText, setTitleText] = useState<string>(initTitleText);
+  const { isAlertActive, showAlert } = useAlert(2);
 
   const changeAmount = (value: number) => {
     const newValue = inputValues.amount + value;
@@ -88,6 +92,7 @@ const PasswordForm = () => {
       }, expandingTransition.duration * 1000);
     } else {
       setTitleText("Creating password");
+
       const { data } = await axios.post(CREATE_PASSWORD, {
         _id: userState.user.id,
         title: inputValues.title,
@@ -104,6 +109,7 @@ const PasswordForm = () => {
         setTitleText(initTitleText);
         setPasswordsState(data.data.passwords);
         setInputValues(initValues);
+        showAlert();
       }, expandingTransition.duration * 1000);
     }
   };
@@ -172,6 +178,7 @@ const PasswordForm = () => {
           />
         </ButtonContainer>
       </PasswordActionsContainer>
+      {isAlertActive && <Alert type={"info"} text={"Completed!"} />}
     </PasswordFormContainer>
   );
 };

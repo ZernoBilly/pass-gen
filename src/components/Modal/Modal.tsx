@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import axios from "axios";
 
 import { PasswordContext } from "../../contexts/passwordContext";
@@ -15,6 +15,8 @@ import {
 
 import Button from "../Button/Button";
 
+import useClickOutside from "../../hooks/useClickOutside";
+
 interface IButton {
   text: string;
   type: "submit" | "delete" | "success" | "cansel";
@@ -29,6 +31,10 @@ type ModalProps = {
 const Modal: React.FC<ModalProps> = ({ type, text, buttons }) => {
   const [passwordsState, setPasswordsState] = useContext<any>(PasswordContext);
   const [modalState, setModalState] = useContext<any>(ModalContext);
+
+  const ref = useRef<any>(null);
+
+  useClickOutside(ref, () => toggleModal());
 
   const handleDelete = async () => {
     const reqData = {
@@ -47,7 +53,7 @@ const Modal: React.FC<ModalProps> = ({ type, text, buttons }) => {
   };
 
   return (
-    <ModalContainer>
+    <ModalContainer ref={ref}>
       <TopContainer>
         <p>{text}</p>
       </TopContainer>
