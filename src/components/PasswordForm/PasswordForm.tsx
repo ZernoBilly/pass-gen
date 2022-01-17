@@ -178,7 +178,7 @@ const PasswordForm = () => {
           />
         </ButtonContainer>
       </PasswordActionsContainer>
-      {isAlertActive && <Alert type={"info"} text={"Completed!"} />}
+      {isAlertActive && <Alert type={"info"} text={"Created!"} />}
     </PasswordFormContainer>
   );
 };

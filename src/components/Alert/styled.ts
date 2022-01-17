@@ -5,8 +5,8 @@ type AlertContainerProps = {
 };
 
 export const AlertContainer = styled.div<AlertContainerProps>`
-  height: 3rem;
-  width: 8rem;
+  height: 4rem;
+  width: 10rem;
   background-color: ${(props) =>
     (props.color === "success" && props.theme.palette.success.light) ||
     (props.color === "info" && props.theme.palette.info.light) ||
@@ -19,10 +19,10 @@ export const AlertContainer = styled.div<AlertContainerProps>`
   border-color: ${({ theme }) => theme.palette.primary.dark};
   position: fixed;
 
-  inset: auto auto 1rem 1rem;
+  inset: 1rem auto auto 1rem;
 
   @media ${({ theme }) => theme.mediaQueries.md} {
-    height: 2rem;
+    height: 3rem;
     width: 6rem;
   }
 `;

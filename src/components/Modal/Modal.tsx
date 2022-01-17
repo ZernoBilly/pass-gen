@@ -32,10 +32,6 @@ const Modal: React.FC<ModalProps> = ({ type, text, buttons }) => {
   const [passwordsState, setPasswordsState] = useContext<any>(PasswordContext);
   const [modalState, setModalState] = useContext<any>(ModalContext);
 
-  const ref = useRef<any>(null);
-
-  useClickOutside(ref, () => toggleModal());
-
   const handleDelete = async () => {
     const reqData = {
       _id: modalState.itemToDelete._id,
@@ -53,7 +49,7 @@ const Modal: React.FC<ModalProps> = ({ type, text, buttons }) => {
   };
 
   return (
-    <ModalContainer ref={ref}>
+    <ModalContainer>
       <TopContainer>
         <p>{text}</p>
       </TopContainer>
